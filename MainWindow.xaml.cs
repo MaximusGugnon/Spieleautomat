@@ -29,6 +29,10 @@ namespace Spieleautomat
 
         }
 
+        private static int Points()
+        {
+        
+        }
         private void bt1_Click(object sender, RoutedEventArgs e)
         {
             //spielen
@@ -37,39 +41,24 @@ namespace Spieleautomat
             lb2.Content = Random1();
             lb3.Content = Random1();
         }
+
+        static Random rng = new Random();
+
         private static string Random1()
         {
             string show = "";
-            Random rng = new Random();
             int random = rng.Next(1, 15);
 
-
-
-            if (random == 1)
-
-            {
-                show = "A";
-            }
+            if (random == 14)
+            { show = "A"; }
             else if (random == 11)
-            {
-                show = "B";
-            }
+            { show = "J"; }
             else if (random == 12)
-            {
-                show = "D";
-            }
+            { show = "Q"; }
             else if (random == 13)
-            {
-                show = "K";
-            }
-            else if (random == 14)
-            {
-                show = "J";
-            }
-            else
-            {
-                show = Convert.ToString(random);
-            }
+            { show = "K"; }
+            
+            else {show = Convert.ToString(random);}
             return show;
 
         }

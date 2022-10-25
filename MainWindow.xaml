@@ -28,7 +28,7 @@
         </Border>
 
         <Button x:Name="bt1" Content="Spielen" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="100,90,0,0" Grid.Row="1" Click="bt1_Click" Grid.Column="2"/>
-        <Label x:Name ="win" Content="Gewinn" HorizontalAlignment="Left" Margin="27,72,0,0" Grid.Row="1" VerticalAlignment="Top" Width="187" Height="75" Grid.Column="1" FontSize="40"/>
+        <Label x:Name ="lb4" Content="Gewinn" HorizontalAlignment="Left" Margin="27,72,0,0" Grid.Row="1" VerticalAlignment="Top" Width="187" Height="75" Grid.Column="1" FontSize="40"/>
 
 
 

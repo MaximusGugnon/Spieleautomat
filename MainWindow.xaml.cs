@@ -38,6 +38,7 @@ namespace Spieleautomat
             lb3.Content = Converter(label3);
 
             lb4.Content = Pointscalculation(label1,label2,label3);
+            lb5.Content= Gewinn(label1, label2, label3);
         }
 
 
@@ -100,5 +101,36 @@ namespace Spieleautomat
             }
             return points;
         }
+        private static string Gewinn(int label1, int label2, int label3)
+        {
+            string hallo = "";
+            if (label1 == label2 && label2 == label3)
+            {
+                hallo = " 3 sind gleich ";
+            }
+            else
+            {
+                if (label1 == label2)
+                {
+                    hallo = " 2 sind gleich ";
+                }
+                else if (label2 == label3)
+                {
+                    hallo = " 2 sind gleich ";
+                }
+                else if (label1 == label3)
+                {
+                    hallo = " 2 sind gleich ";
+                }
+                else
+                {
+                    hallo = " HAHAHAHA";
+                }
+
+            }
+            return hallo;
+        }
+
+
     }
 }

@@ -23,27 +23,48 @@ namespace Spieleautomat
         public MainWindow()
         {
             InitializeComponent();
-
         }
+        public static int rest;
+
 
         private void bt1_Click(object sender, RoutedEventArgs e)
         {
-            //spielen
+            //Wie kann diese "if else" als eine Methode machen
+            // Anzahl im box(tb1)
+            int inbox;
+            if (tb1.Text.Length > 0)
+            {
+                inbox = Convert.ToInt32(tb1.Text);
+            }
+            else
+            {
+                inbox = 0;
+            }
+            
+            if (rest + inbox >= 25)
+            {
+                int label1 = Random1();
+                int label2 = Random2();
+                int label3 = Random3();
+                lb1.Content = Converter(label1);
+                lb2.Content = Converter(label2);
+                lb3.Content = Converter(label3);
+                
 
-            int label1 = Random1();
-            int label2 = Random2();
-            int label3 = Random3();
-            lb1.Content = Converter(label1);
-            lb2.Content = Converter(label2);
-            lb3.Content = Converter(label3);
+                if (tb1.Text.Length > 0)
+                {
+                    rest = rest + Convert.ToInt32(tb1.Text);
+                    tb1.Text = "";
+                }
+                rest = rest - 25 + Pointscalculation(label1, label2, label3);
 
-            lb4.Content = Pointscalculation(label1,label2,label3);
-            lb5.Content= Gewinn(label1, label2, label3);
+
+                lb4.Content = rest;
+                lb5.Content = Gewinn(label1, label2, label3);
+            }
+            else MessageBox.Show("Ich brauche mehr Geld");
         }
-
-
         static Random rng = new Random();
-
         private static int Random1()
         {
             int random1 = rng.Next(2, 15);
@@ -78,7 +99,7 @@ namespace Spieleautomat
         {
 
             int points = 0;
-            
+
             if (label1 == label2 && label2 == label3)
             {
                 points = label1 * 100;
@@ -97,7 +118,7 @@ namespace Spieleautomat
                 {
                     points = (label1 * 10);
                 }
-                
+
             }
             return points;
         }
@@ -124,13 +145,16 @@ namespace Spieleautomat
                 }
                 else
                 {
-                    hallo = " HAHAHAHA";
+                    hallo = "Bruh!";
                 }
 
             }
             return hallo;
         }
-
-
     }
 }
+
+
+//visiibilyty = Visible in da window
+
+//namw.visibility.hidden oder .

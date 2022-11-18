@@ -25,42 +25,26 @@ namespace Spieleautomat
             InitializeComponent();
         }
         public static int rest;
-
+        public static int inbox;
+        public int label1;
+        public int label2;
+        public int label3;
 
         private void bt1_Click(object sender, RoutedEventArgs e)
         {
-            //Wie kann diese "if else" als eine Methode machen
-            // Anzahl im box(tb1)
-            int inbox;
-            if (tb1.Text.Length > 0)
-            {
-                inbox = Convert.ToInt32(tb1.Text);
-            }
-            else
-            {
-                inbox = 0;
-            }
-            
+            IntextboxUmwandeln();
             if (rest + inbox >= 25)
             {
-                int label1 = Random1();
-                int label2 = Random2();
-                int label3 = Random3();
+                label1 = Random1();
+                label2 = Random1();
+                label3 = Random1();
+                Addmoney();
+                Restberechnen();
                 lb1.Content = Converter(label1);
                 lb2.Content = Converter(label2);
                 lb3.Content = Converter(label3);
-                
-
-                if (tb1.Text.Length > 0)
-                {
-                    rest = rest + Convert.ToInt32(tb1.Text);
-                    tb1.Text = "";
-                }
-                rest = rest - 25 + Pointscalculation(label1, label2, label3);
-
-
                 lb4.Content = rest;
-                lb5.Content = Gewinn(label1, label2, label3);
+                lb5.Content = Gewinn(label1, label2, label3) + " ( + " + Pointscalculation(label1, label2, label3) +" Punkte )" ;
             }
             else MessageBox.Show("Ich brauche mehr Geld");
         }
@@ -69,16 +53,6 @@ namespace Spieleautomat
         {
             int random1 = rng.Next(2, 15);
             return random1;
-        }
-        private static int Random2()
-        {
-            int random2 = rng.Next(2, 15);
-            return random2;
-        }
-        private static int Random3()
-        {
-            int random3 = rng.Next(2, 15);
-            return random3;
         }
         private static string Converter(int random)
         {
@@ -151,10 +125,25 @@ namespace Spieleautomat
             }
             return hallo;
         }
+        private void Addmoney()
+        {
+            if (tb1.Text.Length > 0)
+            {
+                rest = rest + Convert.ToInt32(tb1.Text);
+                tb1.Text = "";
+            }
+        }
+        private void Restberechnen()
+        {
+            rest = rest - 25 + Pointscalculation(label1, label2, label3);
+        }
+        private void IntextboxUmwandeln()
+        {
+            if (tb1.Text.Length > 0)
+            {
+                inbox = Convert.ToInt32(tb1.Text);
+            }
+            else { inbox = 0; }
+        }
     }
 }
-
-
-//visiibilyty = Visible in da window
-
-//namw.visibility.hidden oder .
